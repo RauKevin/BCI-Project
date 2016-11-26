@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<script>
+
+var startTime = Date.now();
+var endTime  = 0;
+var timeInSecs;
+var ticker;
+
+function SubmitAnswer(answer) 
+{
+	endTime = Date.now();
+	var timeElapsed = endTime - startTime;
+	document.cookie = "p1_timeComplete=" + endTime;
+	document.cookie = "p1_timeTaken=" + timeElapsed;
+	
+	if(answer && Done())
+	{
+	   document.cookie = "p1_correct=" + true;
+	}else {
+		document.cookie = "p1_correct=" + false;
+	}
+	
+	window.location.replace('survey1.html');    
+}
+
+
+function startTimer(secs)
+{
+	timeInSecs = parseInt(secs)-1;
+	ticker = setInterval("tick()",1000);   // every second
+}
+
+function tick() 
+{
+	var secs = timeInSecs;
+	if (secs>0) 
+	{
+		timeInSecs--;
+	}
+	else {
+		SubmitAnswer(false);
+	}
+
+	document.getElementById("countdown").innerHTML = secs;
+}
+
+var radios = document.getElementsByTagName('input');
+var value;
+
+function Done()
+{
+   for (var i = 0; i < radios.length; i++) {
+       if (radios[i].type === 'radio' && radios[i].checked) {
+           // get value, set checked flag or do whatever you need to
+           value = radios[i].value;       
+       }
+   }
+  
+   //If they done click anything
+	if(value == 0)
+	{
+		return true;
+	}
+	
+return false;	
+}
+
+startTimer(60);  // 60 seconds 
+
+</script>
+
+<style>
+div.container {
+    width: 100%;
+    border: 1px solid gray;
+}
+
+header, footer {
+    padding: 1em;
+    background-color: #d7d7d7;
+    clear: left;
+    text-align: center;
+}
+
+nav {
+    float: right;  
+    max-width: 160px;
+    margin: 0;
+    padding: 1em;
+	padding-right: 3em;
+	padding-top: .25em;
+}
+
+article {
+    margin-left: 10%;
+    border-left: 1px solid gray;
+    padding: 1em;
+    overflow: hidden;
+	height: 50%;
+}
+
+#countdown {
+	text-align: center;
+}
+
+button {
+	padding: 1.5em;	
+}
+
+span {
+	color:red;
+}
+
+</style>
+
+<head>
+	<title> BCI Experimental </title>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+   <h2>Problem 1</h2>
+</header>
+  
+<nav>
+  <p> Time Remaining: </p>
+  <p id="countdown">60 </p>
+</nav>
+
+<article>
+  <h3> Use three 5's and any math signs to make 19 </h3>
+  <p> Example: 5 <span> !  / </span> 5 <span> + </span> 5 = ?   (Used 1 "+" sign)</p> <!--May need an image to better example problem -->
+  <h3> How many '+' signs did you use? </h3>
+  <form action="">
+  <input type="radio" name="item1" value="0"> 0 <br>
+  <input type="radio" name="item1" value="1"> 1 <br>
+  <input type="radio" name="item1" value="2"> 2 <br>
+  <input type="radio" name="item1" value="3"> 3 <br><br>
+  <!--<input type="submit">-->
+  <p> Math signs: +, -, x, /, ^, %, !</p>
+</form> 
+ 
+</article>
+
+<footer>
+<button onclick="SubmitAnswer(true)">Submit Answer</button>
+</footer>
+
+</div>
+
+</body>
+</html>

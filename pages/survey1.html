@@ -1,0 +1,72 @@
+<!-- Survey Question  -->
+
+<!DOCTYPE html>
+<html>
+<style>
+
+h3, p {
+	text-align:center;
+}
+
+form {
+	text-align: center;
+}
+
+.wrapper {
+    text-align: center;
+	padding-top: 5px;
+}
+
+</style>
+
+<script>
+
+var radios = document.getElementsByTagName('input');
+var value;
+
+function Done()
+{
+   for (var i = 0; i < radios.length; i++) {
+       if (radios[i].type === 'radio' && radios[i].checked) {
+           // get value, set checked flag or do whatever you need to
+           value = radios[i].value;       
+       }
+   }
+   
+   //document.getElementById("test").innerHTML = "You clicked " + value;
+
+   //If they done click anything
+	if(value != null)
+	{
+		//set cookie
+		document.cookie = "survey1=" + value;
+		
+		//go to question
+		window.location.replace('solution1.html');
+	}
+		
+}
+</script>
+
+<head>
+<title>BCI Experimental</title>
+</head>
+
+<body>
+<div style="height:50px;"></div>
+
+<h3>Survey Question 1</h3><br>
+
+<p> How difficult did you find the previous problem? </p>
+<form action="">
+  <input type="radio" name="item1" value="1"> Very Difficult </>
+  <input type="radio" name="item1" value="2"> Slightly Difficult </>
+  <input type="radio" name="item1" value="3"> Slightly Easy </>
+  <input type="radio" name="item1" value="4"> Very Easy </><br><br>
+  <!--<input type="submit">-->
+  
+</form> 
+<div class="wrapper" ><button onclick="Done()">Submit</button> </div>
+<!--<br><p id="test"> </p>-->
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<script>
+  
+var timeInSecs;
+var ticker;
+var start = Date.now();
+
+function startTimer(secs){
+	timeInSecs = parseInt(secs)-1;
+	ticker = setInterval("tick()",1000);   // every second
+}
+
+function tick() {
+	var secs = timeInSecs;
+	if (secs>0) {
+		timeInSecs--;
+	}
+	else {
+		//go to next page
+		var time = (start + Date.now())/2
+		document.cookie = "p1_solution=" + time;
+		window.location.replace('blank2.html');
+	}
+}
+
+startTimer(5);  // 5 seconds 
+
+</script>
+<style>
+
+h1,p {
+	text-align:center;
+}
+p{
+	font-size:2em;
+}
+span {
+	color:#FF0000;
+	font-weight: bold;
+}
+
+
+</style>
+
+<head>
+<title>BCI Experimental</title>
+</head>
+<body>
+
+<div style="padding-bottom:50px;"></div>
+<h1>Solution</h1>
+
+<p> Answer: <span> 0 </span> " + " signs </p>
+<p> 5  <span>  !  /  </span>  5  <span>  -  </span>  5 </p>
+<p>  5!/5-5</p>
+<p> (120)/5-5</p>
+<p>  24-5</p>
+<p>  19</p>
+
+</body>
+</html>

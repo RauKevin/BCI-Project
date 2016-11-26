@@ -1,0 +1,53 @@
+<!-- Index -->
+
+<!DOCTYPE html>
+<html>
+<script>
+  
+var timeInSecs;
+var ticker;
+
+function startTimer(secs){
+	timeInSecs = parseInt(secs)-1;
+	ticker = setInterval("tick()",1000);   // every second
+}
+
+function tick() {
+	var secs = timeInSecs;
+	if (secs>0) {
+		timeInSecs--;
+	}
+	else {
+		clearInterval(ticker); // stop counting at zero
+
+	//go to next page
+	window.location.replace('pages/intro.html');
+	}
+
+}
+
+startTimer(5);  // 5 seconds 
+
+</script>
+<style>
+
+h1,p {
+	text-align:center;
+}
+
+</style>
+
+<head>
+<title>BCI Experimental</title>
+</head>
+
+<body>
+
+<div style="padding-bottom:100px;"></div>
+
+<h1>BCI Educational Experiment</h1>
+
+<p>Mae Franco, Janani Janardhanan, Matt Levan, Kevin Rau, Wenhao Wang </p>
+
+</body>
+</html>

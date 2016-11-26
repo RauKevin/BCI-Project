@@ -1,0 +1,92 @@
+<!-- Introduction -->
+
+<!DOCTYPE html>
+<html>
+
+<style>
+
+h3, p {
+	text-align:center;
+}
+
+ul {
+	margin-left: 10%;
+}
+
+form {
+	text-align:center;
+}
+
+.wrapper {
+    text-align: center;
+	padding-top: 5px;
+	margin-left: 2%;
+}
+
+</style>
+
+<script>
+	var errTxt = document.getElementById('error');
+	var name;
+	function validate()
+	{
+		if(validateForm())
+		{
+			//set cookie
+			setCookie();
+
+			//go to 1st question
+			window.location.replace('blank1.html');
+		}
+	}
+
+	function validateForm() 
+	{
+    		name = document.forms["myForm"]["firstname"].value;
+    		if (name == null || name == "") 
+		{
+        		alert("Name must be filled out");
+        		return false;
+    		}
+		else
+		{
+			return true;
+		}
+	}
+	
+	
+	function setCookie()
+	{
+		var startTime = Date.now();
+		document.cookie = "username=" + name;
+		document.cookie = "start=" + startTime;
+	}
+
+</script>
+
+<head>
+<title>BCI Experimental</title>
+</head>
+<body>
+<br>
+<h3>Instructions</h3>
+<br>
+<ul>
+	<li>You will encounter 2 logic problems followed by a brief survey question</li><br>
+	<li>The problems are timed. If you finish a problem early press the "Submit" button</li><br>
+	<li>Enter your Name and Press Enter to begin</li><br>
+</ul> 
+
+<form name="myForm">
+  Name:
+  <input type="text" name="firstname">
+  <br>
+</form>
+
+<div class="wrapper">
+	<br><button onclick="validate()" >Lets get started!</button>
+</div>
+<p id="error"> </p>
+
+</body>
+</html>

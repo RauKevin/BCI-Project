@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<script>
+  
+var timeInSecs;
+var ticker;
+var start = Date.now();
+
+function startTimer(secs){
+	timeInSecs = parseInt(secs)-1;
+	ticker = setInterval("tick()",1000);   // every second
+}
+
+function tick() {
+	var secs = timeInSecs;
+	if (secs>0) {
+		timeInSecs--;
+	}
+	else {
+		//go to next page
+		var time = (start + Date.now())/2
+		document.cookie = "p2_solution=" + time;
+		window.location.replace('thankyou.html');
+	}
+}
+
+startTimer(5);  // 5 seconds 
+
+</script>
+<style>
+
+h1,p {
+	text-align:center;
+}
+
+</style>
+
+<head>
+	<title>BCI Experimental</title>
+</head>
+<body>
+<h1>Solution</h1>
+<div style="padding-bottom:25px;"></div>
+<img src="../images/soln2.png" alt="Blame Matt" style="width:100%;">
+
+</body>
+</html>

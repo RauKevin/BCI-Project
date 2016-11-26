@@ -1,0 +1,31 @@
+BCI Experimental Project
+By: Mae Franco, Janani Janardhanan, Matt Levan, Kevin Rau, Wenhao Wang
+
+Discription:
+
+	This project presents the user with two questions of a math or logic nature. The problems are designed to be difficult in the hopes that EEG capturing software running conncurrent can capture the EEG readings of the problem solving mind. After each problem the user is prompted to answer a one question survey regarding the level of challenge the problem presented. After the survey question the user is breifly provided the solution. After both questions and surveys are completed the webpage displays a short summary of the users performance concluding the experiment.
+
+How to execute:
+
+	Run by navigating to the folder containing the project. Launch the website by selecting the html page named "index.html". Ensure that javascript and cookies are enabled, as the website's logic is run on the clients computer with javascript and cookies enable the data to be collected. Additionally, for best results run the project on a browser compatatble with HTML 5. The website only collects timestamps and survey responces. To collect the EEG data run the minddriver software designed for the EMOTIV or another EEG capturing software. In order to easily sync the the timestamps with the EEG timeslices begin capturing as soon as participant enters their name in the page "intro.html" and presses enter to begin the experiment. With the exception of typing their name the mouse will be the only controller needed to navigate the experiment. The non-EEG data is collected as cookies, a temperary solution, for a more perminant solution send the results to a configured database such as mySQL.
+
+Experiment's flow:
+
+1. Introduction
+2. Blank Screen
+3. Problem 1
+4. Survey 1
+5. Solution to Problem 1
+6. Blank Screen
+7. Problem 2
+8. Survey 2
+9. Solution to Problem 2
+10. Summary
+
+What is recorded:
+
+	The BCI Experiment's intent is to capture the EEG reading of a participant working through a problem. The data recorded in the webpage includes the suvey questions, users answers and time stamps at critical junctions in the experiment. The survey questions ask the user to essentailly rate the difficultly of the previously attempted problem. This aims to find a correlation between the user's preceived mental exhersion and the EEG readings while working on the problem. Problems rated with highier precieved difficulty could show different EEG readings to those that are precieved to show little challenge for the user. Recoding weather or not the user got the question correct can be used to cross reference their survey of precieved difficulty to see if the problem was as easy as reported. The timestamps provide the times of specific events in the experiment. These times are important as they can be used to reference the EEG data to see certain brain activity at the corresponding times in the experiment. The timestamps taken are: the start of the experiemnt, the start of a problem, the conclusion of a problem (by a submiting a solution or running out of time), and the midpoint the user sees the solution.
+
+	
+
+

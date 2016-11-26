@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<script>
+
+function getCookie(cname) 
+{
+	
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+function DisplayStats()
+{
+	//update table items off cookies
+	document.getElementById("name").innerHTML = getCookie("username");
+	if(getCookie("p1_correct")=="true")
+	{
+		document.getElementById("p1").innerHTML = "correct";
+	}else{
+		document.getElementById("p1").innerHTML = "wrong";
+	}
+	document.getElementById("p1_time").innerHTML = getCookie("p1_timeTaken")/1000 + " seconds";
+	document.getElementById("s1").innerHTML = getCookie("survey1");
+	if(getCookie("p2_correct")=="true")
+	{
+		document.getElementById("p2").innerHTML = "correct";
+	}else{
+		document.getElementById("p2").innerHTML = "wrong";
+	}
+	document.getElementById("p2_time").innerHTML = getCookie("p2_timeTaken")/1000 + " seconds";;
+	document.getElementById("s2").innerHTML = getCookie("survey2");
+
+}
+
+function timeStamps()
+{
+	var start = getCookie("start");
+	var p1_end = getCookie("p1_timeComplete") - start;
+	var p1_start = (getCookie("p1_timeComplete") - getCookie("p1_timeTaken")) - start;
+	var p1_soln = getCookie("p1_solution") - start;
+	var p2_end = getCookie("p2_timeComplete") - start;
+	var p2_start = (getCookie("p2_timeComplete") - getCookie("p1_timeTaken")) - start;
+	var p2_soln = getCookie("p2_solution") - start;
+	
+	var text = "Time Stamps\n\nExperiment Start: 0 ms \nProblem 1 start: " + p1_start +" ms \nProblem 1 end: " + p1_end + "ms \nP1 solution seen: " + p1_soln + " ms \nProblem 2 start: " + p2_start +" ms \nProblem 2 end: " + p2_end + "ms \nP2 solution seen: " + p2_soln + " ms";
+	alert(text);
+	
+}
+
+timeStamps();
+
+</script>
+
+<style>
+
+h1,h2,h3 {
+	text-align:center;
+}
+
+body {
+	background-color:#f2f2f2;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 2px;
+	width: 50%;
+}
+
+table{
+	margin:auto;
+}
+
+</style>
+
+<head>
+	<title>BCI Experimental</title>
+</head>
+
+<body>
+
+<div style="padding-bottom:50px;"></div>
+<h1>BCI Educational Experiment</h1>
+<h2>Complete</h2>
+
+<div style="text-align:center;">
+<table style="width:80%">
+  <tr>
+    <th colspan="2"> Statistics </th>
+  </tr>
+  <tr>
+    <td>Name: </td>
+    <td id="name">Foo</td>
+  
+  </tr>
+  <tr>
+    <td>Problem 1:</td>
+    <td id="p1">Correct/Incorrect</td>
+  </tr>
+  <tr>
+    <td>Time Taken</td>
+    <td id="p1_time" > X mins Y secs</td>
+  
+  </tr>
+  <tr>
+    <td>Survey Responce:</td>
+    <td id="s1"> ? </td>
+  
+  </tr>
+  <tr>
+    <td>Problem 2:</td>
+    <td id="p2">Correct/Incorrect</td>
+
+  </tr>
+  <tr>
+    <td>Time Taken</td>
+    <td id="p2_time"> X mins Y secs</td>
+  
+  </tr>
+  <tr>
+    <td>Survey Responce:</td>
+    <td id="s2"> ? </td>
+  
+  </tr>
+</table>
+</div>
+
+<h3 > Thank you for participating, have a good day! </h3>
+
+<script>
+	DisplayStats();
+</script>
+
+</body>
+</html>

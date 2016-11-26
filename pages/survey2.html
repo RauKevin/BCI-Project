@@ -1,0 +1,73 @@
+<!-- Survey Question -->
+
+<!DOCTYPE html>
+<html>
+<style>
+
+h3, p {
+	text-align:center;
+}
+
+form {
+	text-align: center;
+}
+
+.wrapper {
+    text-align: center;
+	padding-top: 5px;	
+}
+
+</style>
+
+<script>
+
+var radios = document.getElementsByTagName('input');
+var value;
+
+function Done()
+{
+	for (var i = 0; i < radios.length; i++) {
+		if (radios[i].type === 'radio' && radios[i].checked) {
+		   // get value, set checked flag or do whatever you need to
+		   value = radios[i].value;       
+		}
+	}
+	
+	document.getElementById("test").innerHTML = "You clicked " + value;
+
+	//Check if user made selection
+	if(value != null)
+	{
+		//set cookie
+		document.cookie = "survey2=" + value;
+		
+		//go to next question
+		window.location.replace('solution2.html');
+	}
+		
+}
+</script>
+
+<head>
+<title>BCI Experimental</title>
+</head>
+
+<body>
+<div style="height:50px;"></div>
+
+<h3>Survey Question 1</h3><br>
+
+<p> How challenging was the previous problem (5-Very Challenging, 1-No Challenge)</p>
+<form action="">
+  <input type="radio" name="item1" value="1">1</><br>
+  <input type="radio" name="item1" value="2">2</><br>
+  <input type="radio" name="item1" value="3">3</><br>
+  <input type="radio" name="item1" value="4">4</><br>
+  <input type="radio" name="item1" value="5">5<br><br>
+  <!--<input type="submit">-->
+  
+</form> 
+<div class="wrapper" ><button onclick="Done()">Submit</button> </div>
+<br><p id="test"> </p>
+</body>
+</html>

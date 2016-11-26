@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<script>
+  
+var timeInSecs;
+var ticker;
+
+function startTimer(secs){
+	timeInSecs = parseInt(secs)-1;
+	ticker = setInterval("tick()",1000);   // every second
+}
+
+function tick() {
+	var secs = timeInSecs;
+	if (secs>0) {
+		timeInSecs--;
+	}
+	else {
+		//go to next page
+		window.location.replace('problem1.html');
+	}
+}
+
+startTimer(10);  // 10 seconds 
+
+</script>
+<style>
+
+h1,p {
+	text-align:center;
+}
+
+body {
+	background-color: grey;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+</style>
+
+<head>
+<title>BCI Experimental</title>
+</head>
+<body>
+
+<!--<img src="" alt="Can no load image" style="width:100%;">-->
+
+</body>
+</html>
